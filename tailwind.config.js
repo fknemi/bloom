@@ -20,7 +20,11 @@ content: ["./App.{js,jsx,ts,tsx}", "./app/**/*.{js,jsx,ts,tsx}"],
               light: "#F4F4F4",
 
           }
-      }
+
+      },
+           fontFamily: {
+        pixer: "Pixer",
+      },
       }
 
   },

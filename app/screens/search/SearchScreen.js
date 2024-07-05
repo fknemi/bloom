@@ -1,3 +1,5 @@
+import Layout from "../../components/layout/Layout";
+
 export default function SearchScreen() {
-    return <></>
+    return <Layout></Layout>
 }

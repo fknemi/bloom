@@ -1,3 +1,7 @@
+import Layout from "../../components/layout/Layout";
+
+
+
 export default function SettingsScreen() {
-    return <></>
+    return <Layout></Layout>
 }

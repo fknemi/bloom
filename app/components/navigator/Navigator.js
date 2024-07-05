@@ -7,7 +7,7 @@ import FilterScreen from "../../screens/filter/FilterScreen";
 import SearchScreen from "../../screens/search/SearchScreen";
 import SettingsScreen from "../../screens/settings/SettingsScreen";
 import NestedScreen from "./NestedScreen"
-
+import Layout from "../layout/Layout"
 const Stack = createNativeStackNavigator();
 
 
