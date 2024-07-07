@@ -1,11 +1,11 @@
 import React from 'react';
 import Svg, { Path } from 'react-native-svg';
 
-const PenIcon = () => {
+const PenIcon = ({width,height}) => {
     return (
         <Svg
-        width={23}
-        height={23}
+        width={width || 23}
+        height={width || 23}
         viewBox="0 0 23 23"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

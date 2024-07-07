@@ -1,11 +1,10 @@
 import React from 'react';
 import Svg, { Path } from 'react-native-svg';
-const HomeIcon = ({route}) => {
-    console.log(route)
+const HomeIcon = ({route,width,height}) => {
     return (
         <Svg
-            width={28}
-            height={27}
+            width={width || 28}
+            height={height || 27}
             viewBox="0 0 28 27"
             fill="none"
         >

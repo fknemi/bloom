@@ -4,7 +4,7 @@ import { SafeAreaView, Text } from "react-native"
 
 const Layout = ({children}) => {
 return (
-    <SafeAreaView className="flex-1 bg-peach-light">
+    <SafeAreaView className="bg-peach-light flex-1">
     {children}
     </SafeAreaView>
 )
