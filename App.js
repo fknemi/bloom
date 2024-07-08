@@ -7,23 +7,63 @@ import PenIcon from "./app/components/icons/PenIcon";
 import FilterIcon from "./app/components/icons/FilterIcon";
 import SearchIcon from "./app/components/icons/SearchIcon";
 import { Text, View, StatusBar } from "react-native";
-import useFonts from "./app/utils/useFonts"
-
-
+import * as SplashScreen from 'expo-splash-screen';
+import {useFonts, loadAsync} from 'expo-font'
+import { useCallback, useEffect, useState } from "react";
+SplashScreen.preventAutoHideAsync()
 
 const Tab = createBottomTabNavigator()
 
 export default function App() {
 
-    const fonts = useFonts();
+    const [fontsLoaded] = useFonts({
+        gully_bold: require('./assets/fonts/gully/otf/gully_bold.otf'),
+        gully_medium: require('./assets/fonts/gully/otf/gully_medium.otf'),
+        gully_regular: require('./assets/fonts/gully/otf/gully_regular.otf'),
+        gully_light: require('./assets/fonts/gully/otf/gully_light.otf'),
+        super_sunshine: require('./assets/fonts/super_sunshine/ttf/super_sunshine.ttf'),
+        pixer: require('./assets/fonts/pixer/ttf/pixer.ttf'),
+      })
+  
+      const [appIsReady, setAppIsReady] = useState(false)
 
-    if (!fonts) {
-        return <View><Text>Loading</Text></View>
+    useEffect(() => {
+        async function prepare() {
+            try{
+                loadAsync({
+                    gully_bold: require('./assets/fonts/gully/otf/gully_bold.otf'),
+                    gully_medium: require('./assets/fonts/gully/otf/gully_medium.otf'),
+                    gully_regular: require('./assets/fonts/gully/otf/gully_regular.otf'),
+                    gully_light: require('./assets/fonts/gully/otf/gully_light.otf'),
+                    super_sunshine: require('./assets/fonts/super_sunshine/ttf/super_sunshine.ttf'),
+                    pixer: require('./assets/fonts/pixer/ttf/pixer.ttf'),
+                })
+                await new Promise(resolve => setTimeout(resolve, 2000))
+
+            } catch (e) {
+                console.warn(e)
+            } finally {
+                setAppIsReady(true)
+                                                    
+            }
+        }
+        prepare()
+    },[])
+const onLayoutRootView = useCallback(async () => {
+
+    if(appIsReady){
+        await SplashScreen.hideAsync()
 
     }
 
-
+},[appIsReady])
+onLayoutRootView()
+if(!appIsReady){
+    return null
+}
     return (
+    
+    
         <NavigationContainer>
             <StatusBar
                 animated={true}
@@ -75,5 +115,7 @@ export default function App() {
 
 
         </NavigationContainer>
+
+
     );
 }
