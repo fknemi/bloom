@@ -94,7 +94,8 @@ if(!appIsReady){
                         backgroundColor: "#D5C9B9",
 
                     },
-                    headerShown: false
+                    headerShown: false,
+                    tabBarHideOnKeyboard: true
                 })
                 }
             >
