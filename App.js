@@ -1,6 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import SCREENS from "./app/enums/screens";
+import FONTS from "./app/enums/fonts";
+
 import { DashboardScreenNavigator, EditorScreenNavigator, SearchScreenNavigator, FilterScreenNavigator, SettingsScreenNavigator } from "./app/components/navigator/Navigator";
 import HomeIcon from "./app/components/icons/HomeIcon";
 import PenIcon from "./app/components/icons/PenIcon";
@@ -10,35 +12,24 @@ import { Text, View, StatusBar } from "react-native";
 import * as SplashScreen from 'expo-splash-screen';
 import {useFonts, loadAsync} from 'expo-font'
 import { useCallback, useEffect, useState } from "react";
+
 SplashScreen.preventAutoHideAsync()
 
 const Tab = createBottomTabNavigator()
 
 export default function App() {
 
-    const [fontsLoaded] = useFonts({
-        gully_bold: require('./assets/fonts/gully/otf/gully_bold.otf'),
-        gully_medium: require('./assets/fonts/gully/otf/gully_medium.otf'),
-        gully_regular: require('./assets/fonts/gully/otf/gully_regular.otf'),
-        gully_light: require('./assets/fonts/gully/otf/gully_light.otf'),
-        super_sunshine: require('./assets/fonts/super_sunshine/ttf/super_sunshine.ttf'),
-        pixer: require('./assets/fonts/pixer/ttf/pixer.ttf'),
-      })
+    const [fontsLoaded] = useFonts(FONTS)
+      
   
       const [appIsReady, setAppIsReady] = useState(false)
 
     useEffect(() => {
         async function prepare() {
             try{
-                loadAsync({
-                    gully_bold: require('./assets/fonts/gully/otf/gully_bold.otf'),
-                    gully_medium: require('./assets/fonts/gully/otf/gully_medium.otf'),
-                    gully_regular: require('./assets/fonts/gully/otf/gully_regular.otf'),
-                    gully_light: require('./assets/fonts/gully/otf/gully_light.otf'),
-                    super_sunshine: require('./assets/fonts/super_sunshine/ttf/super_sunshine.ttf'),
-                    pixer: require('./assets/fonts/pixer/ttf/pixer.ttf'),
-                })
+                loadAsync(FONTS)
                 await new Promise(resolve => setTimeout(resolve, 2000))
+
 
             } catch (e) {
                 console.warn(e)

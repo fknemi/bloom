@@ -80,16 +80,14 @@ export default function EditorScreen() {
 <View className={`border-rose-500 border-2 flex flex-row h-full items-start justify-between`}>
 
 {/* CONTENT AREA */}
-<View className={`" h-full mt-2`}>
-<View  className="">
+<View className={`" full mt-2`}>
+<View  pointerEvents={disableNoteInput ? "none" : "auto"} className="">
 <TextInput placeholder={"..."}  value={noteInputValue} onChange={onSubmit} multiline={true} className={`h-full w-screen pr-10 text-start font-gu_r text-xl`} textAlignVertical={"top"} />
-
-
     </View>
-
 </View>
- {/* RIBBON */}
 
+
+ {/* RIBBON */}
 <View className={`border-2 w-[${width*0.2}] border-green-500 items-center justify-end absolute ${isKeyboardVisible ? "bottom-[10%]" : "bottom-[45%]"} right-0 gap-y-6 flex flex-col `}> 
 
 
@@ -115,6 +113,7 @@ export default function EditorScreen() {
 
 <TouchableOpacity onPress={() => {
     setDisableNoteInput(!disableNoteInput)
+    console.log("DISABLED" + disableNoteInput ? "all" : "none")
 }}>
     <BookIcon  width={25} height={25}  />
         </TouchableOpacity>
